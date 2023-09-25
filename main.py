@@ -1,9 +1,17 @@
 import json
+import random
 
 cards=None
 
 with open('./cards.json') as jsonFile:
     cards=json.load(jsonFile)
+
+class deck:
+    drawPile=[]
+    discardPile=[]
+    def __init__(self,cards):
+        for card in cards:
+            self.drawPile.append(card)
 
 class player:
     hand=[]
@@ -33,6 +41,11 @@ class card:
         self.type=type
         self.cost=cost
         self.dmg=dmg
+
+pDeck=deck(cards)
+print(pDeck.drawPile)
+random.shuffle(pDeck.drawPile)
+print(pDeck.drawPile)
 
 player1=player(hand=[],health=90,mana=5)
 improvised_club=card("improvised_club","weapon",2,6)
