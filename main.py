@@ -1,3 +1,10 @@
+import json
+
+cards=None
+
+with open('./cards.json') as jsonFile:
+    cards=json.load(jsonFile)
+
 class player:
     hand=[]
     health=None
