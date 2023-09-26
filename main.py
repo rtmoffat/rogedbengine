@@ -12,15 +12,19 @@ class deck:
     def __init__(self,cards):
         for card in cards:
             self.drawPile.append(card)
+    def draw(self):
+        return self.drawPile.pop()
 
 class player:
     hand=[]
     health=None
     mana=None
-    def __init__(self,hand,health,mana):
+    def __init__(self,hand,health,mana,drawLimit=6,handSizeLimit=6):
         self.hand=hand
         self.health=health
         self.mana=mana
+        self.drawLimit=drawLimit
+        self.handSizeLimit=handSizeLimit
 
 class enemy:
     name=""
@@ -47,18 +51,24 @@ print(pDeck.drawPile)
 random.shuffle(pDeck.drawPile)
 print(pDeck.drawPile)
 
+#Init player
 player1=player(hand=[],health=90,mana=5)
-improvised_club=card("improvised_club","weapon",2,6)
-for x in range(6):
-    player1.hand.append(improvised_club)
+
+#Draw up to draw limit
+for i in range(player1.drawLimit):
+    player1.hand.append(pDeck.draw())
 
 troll=enemy("Leroy",50,10)
 
 while (troll.health>0) & (len(player1.hand)>0):
     play=input("Play a card?")
     if play.upper()=="Y":
-        player1.hand.pop()
-        troll.health-=improvised_club.dmg
+        #Display player hand
+        for cardIndex in range(len(player1.hand)):
+            print(str(cardIndex)+str(player1.hand[cardIndex]['Name']))
+        choice=input("Choose a card to play:")
+        troll.health-=player1.hand[int(choice)]['Damage']
+        player1.hand.pop(int(choice))
     else:
         player1.health-=troll.dmg
     print("Player:"+str(player1.health))
