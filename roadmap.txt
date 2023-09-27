@@ -5,3 +5,4 @@
 *Add discard method to deck class
 *Add re-shuffle method to deck
 *Add cgi-bin directory
+python -m http.server --bind localhost --cgi 8000
