@@ -4,3 +4,4 @@
 *Add discard pile to deck class
 *Add discard method to deck class
 *Add re-shuffle method to deck
+*Add cgi-bin directory
