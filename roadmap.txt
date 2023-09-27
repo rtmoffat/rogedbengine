@@ -1,6 +1,6 @@
 *Select a card to play
 *Reduce mana after playing card
-Draw up to hand limit at beginning of player turn
+*Draw up to hand limit at beginning of player turn
 *Add discard pile to deck class
 *Add discard method to deck class
 *Add re-shuffle method to deck
