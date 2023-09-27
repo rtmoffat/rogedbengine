@@ -25,6 +25,8 @@ class player:
         self.mana=mana
         self.drawLimit=drawLimit
         self.handSizeLimit=handSizeLimit
+    def resetMana(self):
+        self.mana=6
 
 class enemy:
     name=""
@@ -52,7 +54,7 @@ random.shuffle(pDeck.drawPile)
 print(pDeck.drawPile)
 
 #Init player
-player1=player(hand=[],health=90,mana=5)
+player1=player(hand=[],health=90,mana=6)
 
 #Draw up to draw limit
 for i in range(player1.drawLimit):
@@ -67,13 +69,18 @@ while (troll.health>0) & (len(player1.hand)>0):
         for cardIndex in range(len(player1.hand)):
             print(str(cardIndex)+str(player1.hand[cardIndex]['Name']))
         choice=input("Choose a card to play:")
-        troll.health-=player1.hand[int(choice)]['Damage']
-        player1.hand.pop(int(choice))
+        if (player1.hand[int(choice)]['Cost']<=player1.mana):
+            troll.health-=player1.hand[int(choice)]['Damage']
+            player1.mana-=player1.hand[int(choice)]['Cost']
+            player1.hand.pop(int(choice))
+        else:
+            print("Insufficient mana!")
     else:
+        player1.resetMana()
         player1.health-=troll.dmg
     print("Player:"+str(player1.health))
     print("Enemy:"+str(troll.health))
-    
+    print("Player Mana:"+str(player1.mana))
 if troll.health<=0:
     print("You beat the troll!!")
 else:
