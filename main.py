@@ -14,6 +14,14 @@ class deck:
             self.drawPile.append(card)
     def draw(self):
         return self.drawPile.pop()
+    def discard(self,card):
+        self.discardPile.append(card)
+    def shuffle(self,includeDiscardPile):
+        if (includeDiscardPile):
+            self.drawPile+=self.discardPile
+            self.discardPile.clear()
+        random.shuffle(self.drawPile)
+
 
 class player:
     hand=[]
@@ -56,23 +64,30 @@ print(pDeck.drawPile)
 #Init player
 player1=player(hand=[],health=90,mana=6)
 
-#Draw up to draw limit
-for i in range(player1.drawLimit):
-    if (len(player1.hand)<player1.drawLimit):
-        player1.hand.append(pDeck.draw())
+def pDraw():
+    #Draw up to draw limit
+    for i in range(player1.drawLimit):
+        if (len(player1.hand)<player1.drawLimit):
+            #Reshuffle dicsard pile if draw pile is empty
+            if (len(pDeck.drawPile)==0):
+                pDeck.shuffle(True)
+            player1.hand.append(pDeck.draw())
 
 troll=enemy("Leroy",50,10)
 #Main combat loop
-while (troll.health>0) & (len(player1.hand)>0):
+while (troll.health>0):
+    #Draw cards up to hand limit
+    pDraw()
     play=input("Play a card?")
-    if play.upper()=="Y":
+    if (play.upper()=="Y"):
         #Display player hand
         for cardIndex in range(len(player1.hand)):
-            print(str(cardIndex)+str(player1.hand[cardIndex]['Name']))
+            print(str(cardIndex)+str(player1.hand[cardIndex]['Name'])+' '+str(player1.hand[cardIndex]['Cost']))
         choice=input("Choose a card to play:")
         if (player1.hand[int(choice)]['Cost']<=player1.mana):
             troll.health-=player1.hand[int(choice)]['Damage']
             player1.mana-=player1.hand[int(choice)]['Cost']
+            pDeck.discard(player1.hand[int(choice)])
             player1.hand.pop(int(choice))
         else:
             print("Insufficient mana!")
