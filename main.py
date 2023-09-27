@@ -58,10 +58,11 @@ player1=player(hand=[],health=90,mana=6)
 
 #Draw up to draw limit
 for i in range(player1.drawLimit):
-    player1.hand.append(pDeck.draw())
+    if (len(player1.hand)<player1.drawLimit):
+        player1.hand.append(pDeck.draw())
 
 troll=enemy("Leroy",50,10)
-
+#Main combat loop
 while (troll.health>0) & (len(player1.hand)>0):
     play=input("Play a card?")
     if play.upper()=="Y":
