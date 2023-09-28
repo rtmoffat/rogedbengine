@@ -1,1 +1,3 @@
-#draggable { width: 150px; height: 150px; padding: 0.5em; }
+#cont {width:800;height:600;border:1px solid black;}
+/*.draggable { width: 150px; height: 150px; padding: 0.5em; }*/
+.card:hover {font-weight:bold;}
