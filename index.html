@@ -60,11 +60,12 @@
         <script src="./lib/jquery-ui/jquery-ui.min.js"></script>
         <script>
               $( function() {
-                $( ".draggable" ).draggable();
+                $( ".draggable" ).draggable({revert:"invalid",revertDuration:200});
                 $( ".droppable" ).droppable({
                     tolerance:"pointer",
                     drop: function( event, ui ) {
                         alert('dropped!');
+                        ui.draggable.remove();
                     }
                     });
                 } );
