@@ -22,10 +22,9 @@
                 health|stuff|some other stat
             </div>
             <div id="arena">
-                <div id="player">Player</div>
+                <div id="player"><img src="./images/knight1.gif"/></div>
                 <div id="enemies">
-                    Enemies
-                    <div class="enemy droppable" id="enemy1">Enemy1</div>
+                    <div class="enemy droppable" id="enemy1"><img src="./images/troll_warlord.png"/></div>
                     <div class="enemy droppable" id="enemy2">Enemy2</div>
                     <div class="enemy droppable" id="enemy3">Enemy3</div>
                 </div>
@@ -56,6 +55,7 @@
                 <p>Testing</p>
             </div>
         </div>
+        <audio id="thwack" src="./sounds/whack.mp3"></audio>
         <script src="./lib/jquery/query-3.7.1.min.js"></script>
         <script src="./lib/jquery-ui/jquery-ui.min.js"></script>
         <script>
@@ -64,7 +64,8 @@
                 $( ".droppable" ).droppable({
                     tolerance:"pointer",
                     drop: function( event, ui ) {
-                        alert('dropped!');
+                        //alert('dropped!');
+                        $("#thwack")[0].play();
                         ui.draggable.remove();
                     }
                     });

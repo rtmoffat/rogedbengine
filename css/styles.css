@@ -1,5 +1,12 @@
-#cont {width:800;height:600;border:1px solid black;}
+#cont {width:800px;height:600px;border:1px solid black;}
 /*.draggable { width: 150px; height: 150px; padding: 0.5em; }
 .card {width:100px;height:100px;border:1px solid green;background-color:orange;}
 .enemy {width:100px;height:100px;border:1px solid rgb(128, 0, 0);background-color:rgb(57, 103, 184);}*/
+#statusBar {height:10%;width:100%;min-width:fit-content; background-color:lightseagreen;border:1px solid white;}
+#arena {background-color:darkslategray;height:50%;}
+#playArea{background-color:lightslategray;height:30%;border:1px solid white;}
 .card:hover,.enemy:hover {font-weight:bold;}
+#player {display:inline-block;width:45%;}
+#enemies {display:inline-block;width:45%;}
+.card {display:inline-block;height:200px;width:100px;border:1px double black;border-radius: 5%;background-color:white;}
+img {max-width: 100px;max-height: 200px;}
