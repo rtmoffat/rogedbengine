@@ -7,7 +7,7 @@
 *Add cgi-bin directory
 python -m http.server --bind localhost --cgi 8000
 *convert python script to javascript
-cgi-bin directory no longer necessary
+*cgi-bin directory no longer necessary
 design database
 code database connections
 Do I need a database?
@@ -20,3 +20,4 @@ Create animations
 Fix min-width bug when browser resized
 Click and drag odesn't work on touchscreens. Implement tap to select card and then tap to select target,
     or some other mechanism.
+MVP Make actions modify statuses of objects (health, mana, etc)
