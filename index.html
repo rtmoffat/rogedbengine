@@ -19,18 +19,27 @@
         <![endif]-->
         <div id="cont">
             <div id="statusBar">
-                health|stuff|some other stat
+                <span class="unselectable">health|stuff|some other stat</span>
             </div>
             <div id="arena">
                 <div id="player"><img src="./images/knight1.gif"/></div>
                 <div id="enemies">
-                    <div class="enemy droppable" id="enemy1"><img src="./images/troll_warlord.png"/></div>
-                    <div class="enemy droppable" id="enemy2">Enemy2</div>
-                    <div class="enemy droppable" id="enemy3">Enemy3</div>
+                    <div class="enemy droppable" id="enemy1">
+                        <img src="./images/troll_warlord.png"/>
+                        <div><label>25<progress value="25" max="32"></progress></label></div>
+                    </div>
+                    <div class="enemy droppable" id="enemy2">
+                        <img src="./images/troll_warlord.png"/>
+                        <div><label>25<progress value="25" max="32"></progress></label></div>
+                    </div>
+                    <div class="enemy droppable" id="enemy3">
+                        <img src="./images/troll_warlord.png"/>
+                        <div><label>25<progress value="25" max="32"></progress></label></div>
+                    </div>
                 </div>
             </div>
             <div id="playArea">
-                <div id="mana">5</div>
+                <div id="mana"><p>5</p></div>
                 <div id="deck">
                     <div id="drawPile"><p>25</p></div>
                     <div id="discardPile"><p>15</p></div>
@@ -65,17 +74,20 @@
                         <div class="cardDescription">Description</div>
                     </div>
                 </div>
-                <p>Testing</p>
+                <button id="endTurn">End Turn</button>
             </div>
         </div>
-        <audio id="thwack" src="./sounds/whack.mp3"></audio>
+        <audio id="thwack" preload="auto" src="./sounds/whack.mp3"></audio>
         <script src="./lib/jquery/query-3.7.1.min.js"></script>
         <script src="./lib/jquery-ui/jquery-ui.min.js"></script>
         <script>
               $( function() {
-                $( ".draggable" ).draggable({revert:"invalid",revertDuration:200});
+                $( ".draggable" ).draggable({revert:"invalid",revertDuration:200,opacity: 0.35});
                 $( ".droppable" ).droppable({
                     tolerance:"pointer",
+                    classes: {
+                        "ui-droppable-hover": "highlightTarget"
+                        },
                     drop: function( event, ui ) {
                         //alert('dropped!');
                         $("#thwack")[0].play();

@@ -17,3 +17,6 @@ Create graphics
 *MVP Create simple sounds
 Create sounds
 Create animations
+Fix min-width bug when browser resized
+Click and drag odesn't work on touchscreens. Implement tap to select card and then tap to select target,
+    or some other mechanism.
