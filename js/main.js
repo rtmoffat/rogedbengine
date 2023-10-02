@@ -11,6 +11,15 @@ fs.readFile('../data/cards.json', 'utf8', (err, data) => {
   }
   cards = JSON.parse(data);
 
+  let enemies;
+
+fs.readFile('../data/enemies.json', 'utf8', (err, data) => {
+  if (err) {
+    console.error('Error reading enemies.json:', err);
+    return;
+  }
+  enemies = JSON.parse(data);
+
   class Deck {
     constructor(cards) {
       this.drawPile = [];
