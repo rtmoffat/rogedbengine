@@ -8,10 +8,10 @@
 python -m http.server --bind localhost --cgi 8000
 *convert python script to javascript
 *cgi-bin directory no longer necessary
-design database
-code database connections
 Do I need a database?
-MVP Arrange play Area
+    design database
+    code database connections
+*MVP Arrange play Area
 MVP Create basic graphics
 Create graphics
 *MVP Create simple sounds
