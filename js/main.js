@@ -1,5 +1,6 @@
 import { getLocalCards } from '../data/local/cards.js';
 import { getLocalEnemies } from '../data/local/enemies.js';
+import { getLocalLevels } from '../data/local/levels.js';
 
 function loadData() {
   var data={};
@@ -8,26 +9,34 @@ function loadData() {
     console.log('Loading locally');
     cards=getLocalCards();
     enemies=getLocalEnemies();
+    levels=getLocalLevels();
     console.log(cards);
     console.log(enemies);
+    console.log(levels);
     data['cards']=cards;
     data['enemies']=enemies;
+    data['levels']=levels;
   }
   else {
     console.log('Loading remotely');
     const fs = require('fs');
     const readline = require('readline');
     
-    enemies=JSON.parse(fs.readFileSync('../data/enemies.json','utf-8'))
-    console.log(enemies)
+    enemies=JSON.parse(fs.readFileSync('../data/enemies.json','utf-8'));
+    console.log(enemies);
     
-    cards=JSON.parse(fs.readFileSync('../data/cards.json', 'utf8'))
-    console.log(cards)
+    cards=JSON.parse(fs.readFileSync('../data/cards.json', 'utf8'));
+    console.log(cards);
+    
+    levels=JSON.parse(fs.readFileSync('../data/levels.json', 'utf8'));
+    console.log(levels);
     data['cards']=cards;
     data['enemies']=enemies;
+    data['levels']=levels;
   }
   return data;
 }
+
 function initGui() {
   $( function() {
     $( ".draggable" ).draggable({revert:"invalid",revertDuration:200,opacity: 0.35});
@@ -38,8 +47,11 @@ function initGui() {
             },
         drop: function( event, ui ) {
             //alert('dropped!');
+            console.log('hi2');
             $("#thwack")[0].play();
             ui.draggable.remove();
+            console.log(event.target.id);
+            console.log('hi');
         }
       });
     });
@@ -86,6 +98,10 @@ class Player {
   resetMana() {
     this.mana = 6;
   }
+
+  adjustLifeTotal(amt) {
+    this.health+=amt;
+  }
 }
 
 class Enemy {
@@ -93,6 +109,10 @@ class Enemy {
     this.name = name;
     this.health = health;
     this.dmg = dmg;
+  }
+
+  adjustLifeTotal(amt) {
+    this.health+=amt;
   }
 }
 
@@ -104,6 +124,7 @@ class Card {
     this.dmg = dmg;
   }
 }
+
 let enemies;
 let cards;
 let levels;
@@ -112,6 +133,7 @@ let data={};
 data=loadData();
 cards=data['cards'];
 enemies=data['enemies'];
+levels=data['levels'];
 const pDeck = new Deck(cards);
 console.log(pDeck.drawPile);
 pDeck.shuffle();
