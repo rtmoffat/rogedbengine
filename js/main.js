@@ -12,7 +12,6 @@ function loadData() {
     console.log(enemies);
     data['cards']=cards;
     data['enemies']=enemies;
-    return data;
   }
   else {
     console.log('Loading remotely');
@@ -24,7 +23,10 @@ function loadData() {
     
     cards=JSON.parse(fs.readFileSync('../data/cards.json', 'utf8'))
     console.log(cards)
+    data['cards']=cards;
+    data['enemies']=enemies;
   }
+  return data;
 }
 function initGui() {
   $( function() {
@@ -42,7 +44,6 @@ function initGui() {
       });
     });
 }
-
 
 class Deck {
   constructor(cards) {
