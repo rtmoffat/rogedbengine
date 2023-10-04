@@ -1,5 +1,5 @@
 body {background-color:black;}
-.unselectable,p,label {user-select:none;}
+.unselectable,p,label,.cardTitle,.cardDescription {user-select:none;}
 #cont {border:1px solid black;max-width:fit-content;min-width:50%;margin:0 auto;}
 /*.draggable { width: 150px; height: 150px; padding: 0.5em; }
 .card {width:100px;height:100px;border:1px solid green;background-color:orange;}
@@ -8,7 +8,7 @@ body {background-color:black;}
 #arena {background-color:darkslategray;display:flex;flex-direction:row;}
 #playArea{background-color:lightslategray;border:1px solid white;display:flex;flex-direction:row;height:fit-content;min-height: 205px;}
 .card:hover,.enemy:hover {font-weight:bold;}
-.card:hover {transform:scale(1.10)}
+.card:hover {transform:scale(1.10);cursor:grab;}
 /*#player {display:inline-block;width:45%;}*/
 #player {display:flex;flex-direction:row;}
 #enemies {display:flex;flex-direction:column;margin-left:10%;}

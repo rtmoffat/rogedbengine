@@ -1,3 +1,31 @@
+import { getLocalCards } from '../data/local/cards.js';
+import { getLocalEnemies } from '../data/local/enemies.js';
+
+function loadData() {
+  var data={};
+  const location=window.location.hostname;
+  if (location=='localhost' || location=='127.0.0.1') {
+    console.log('Loading locally');
+    cards=getLocalCards();
+    enemies=getLocalEnemies();
+    console.log(cards);
+    console.log(enemies);
+    data['cards']=cards;
+    data['enemies']=enemies;
+    return data;
+  }
+  else {
+    console.log('Loading remotely');
+    const fs = require('fs');
+    const readline = require('readline');
+    
+    enemies=JSON.parse(fs.readFileSync('../data/enemies.json','utf-8'))
+    console.log(enemies)
+    
+    cards=JSON.parse(fs.readFileSync('../data/cards.json', 'utf8'))
+    console.log(cards)
+  }
+}
 function initGui() {
   $( function() {
     $( ".draggable" ).draggable({revert:"invalid",revertDuration:200,opacity: 0.35});
@@ -15,16 +43,6 @@ function initGui() {
     });
 }
 
-const fs = require('fs');
-const readline = require('readline');
-
-let enemies;
-enemies=JSON.parse(fs.readFileSync('../data/enemies.json','utf-8'))
-console.log(enemies)
-
-let cards;
-cards=JSON.parse(fs.readFileSync('../data/cards.json', 'utf8'))
-console.log(cards)
 
 class Deck {
   constructor(cards) {
@@ -85,7 +103,14 @@ class Card {
     this.dmg = dmg;
   }
 }
+let enemies;
+let cards;
+let levels;
+let data={};
 
+data=loadData();
+cards=data['cards'];
+enemies=data['enemies'];
 const pDeck = new Deck(cards);
 console.log(pDeck.drawPile);
 pDeck.shuffle();
