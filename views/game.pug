@@ -1,0 +1,112 @@
+doctype html
+// [if lt IE 7]>      <div data-pug="html" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]
+// [if IE 7]>         <div data-pug="html" class="no-js lt-ie9 lt-ie8"> <![endif]
+// [if IE 8]>         <div data-pug="html" class="no-js lt-ie9"> <![endif]
+// [if gt IE 8]>      <div data-pug="html" class="no-js"> <!--<![endif]
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(
+      content="IE=edge" 
+      http-equiv="X-UA-Compatible"
+      )
+    title rogedbengine
+    meta(
+      content="" 
+      name="description"
+      )
+    meta(
+      content="width=device-width, initial-scale=1" 
+      name="viewport"
+      )
+    link(
+      href="css/styles.css" 
+      rel="stylesheet"
+      )
+    link(
+      href="/lib/jquery-ui/jquery-ui.theme.min.css" 
+      rel="stylesheet"
+      )
+  body
+    //
+      [if lt IE 7]>
+       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+       <![endif]
+    #cont
+      #statusBar
+        span.unselectable health|stuff|some other stat
+      #arena
+        #player
+          img(src="/images/knight1.gif")
+        #enemies
+          #enemy1.enemy.droppable
+            img(src="/images/troll_warlord.png")
+            div
+              label
+                | 25
+                progress(
+                  max="32" 
+                  value="25"
+                  )
+          #enemy2.enemy.droppable
+            img(src="/images/troll_warlord.png")
+            div
+              label
+                | 25
+                progress(
+                  max="32" 
+                  value="25"
+                  )
+          #enemy3.enemy.droppable
+            img(src="/images/troll_warlord.png")
+            div
+              label
+                | 25
+                progress(
+                  max="32" 
+                  value="25"
+                  )
+      #playArea
+        #mana
+          p 5
+        #deck
+          #drawPile
+            p 25
+          #discardPile
+            p 15
+        #hand
+          #card9.card.draggable.template
+            .cardTitle
+              span Cost
+              span Name
+            .cardImage Image
+            .cardDescription Description
+          #card8.card.draggable.template
+            .cardTitle
+              span Cost
+              span Name
+            .cardImage Image
+            .cardDescription Description
+          #card7.card.draggable.template
+            .cardTitle
+              span Cost
+              span Name
+            .cardImage Image
+            .cardDescription Description
+          #card6.card.draggable.template
+            .cardTitle
+              span Cost
+              span Name
+            .cardImage Image
+            .cardDescription Description
+        button#endTurn End Turn
+    audio#thwack(
+      src="/sounds/whack.mp3" 
+      preload="auto"
+      )
+    script(src="/lib/jquery/query-3.7.1.min.js")
+    script(src="/lib/jquery-ui/jquery-ui.min.js")
+    script(
+      src="/js/main.js" 
+      type="module"
+      )
