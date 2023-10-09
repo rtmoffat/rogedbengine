@@ -5,14 +5,6 @@ app.set('view engine', 'pug')
 //Instructs the app to get static files relative to the root directory
 app.use(express.static(path.join(__dirname, '/')))
 
-app.get('/', (req, res) => {
-    try {
-        res.render('game', { title: 'Hey', message: 'Hello there!' })
-    } catch(e) {
-        console.log(e.message)
-    }
-  })
-
 function loadData() {
   var data={};
   //const location=window.location.hostname;
@@ -50,6 +42,15 @@ function loadData() {
 }
 var data={};
 data=loadData();
+
+app.get('/', (req, res) => {
+    try {
+        console.log(data);
+        res.render('game', { data:data})
+    } catch(e) {
+        console.log(e.message)
+    }
+  })
 
 app.listen(3000);
 console.log("listening");
