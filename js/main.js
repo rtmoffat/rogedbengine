@@ -1,4 +1,4 @@
-import { getLocalCards } from '../data/local/cards.js';
+/*import { getLocalCards } from '../data/local/cards.js';
 import { getLocalEnemies } from '../data/local/enemies.js';
 import { getLocalLevels } from '../data/local/levels.js';
 
@@ -35,7 +35,7 @@ function loadData() {
     data['levels']=levels;
   }
   return data;
-}
+}*/
 
 function initGui() {
   $( function() {
@@ -131,7 +131,7 @@ let cards;
 let levels;
 let data={};
 
-data=loadData();
+/*data=loadData();
 cards=data['cards'];
 enemies=data['enemies'];
 levels=data['levels'];
@@ -140,5 +140,5 @@ console.log(pDeck.drawPile);
 pDeck.shuffle();
 console.log(pDeck.drawPile);
 const player1 = new Player([], 90, 6);
-console.log(player1.health)
+console.log(player1.health)*/
 initGui();

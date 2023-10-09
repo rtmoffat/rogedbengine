@@ -40,32 +40,15 @@ html(lang="en")
         #player
           img(src="/images/knight1.gif")
         #enemies
-          #enemy1.enemy.droppable
-            img(src="/images/troll_warlord.png")
-            div
-              label
-                | 25
+          each enemy in data['enemies']
+            #enemy4.enemy.droppable
+              //img(src="/images/troll_warlord.png")
+              p=enemy.name
+              div
+                label=enemy['health']
                 progress(
-                  max="32" 
-                  value="25"
-                  )
-          #enemy2.enemy.droppable
-            img(src="/images/troll_warlord.png")
-            div
-              label
-                | 25
-                progress(
-                  max="32" 
-                  value="25"
-                  )
-          #enemy3.enemy.droppable
-            img(src="/images/troll_warlord.png")
-            div
-              label
-                | 25
-                progress(
-                  max="32" 
-                  value="25"
+                    max=enemy['health']
+                      value=enemy['health']
                   )
       #playArea
         #mana
@@ -107,7 +90,7 @@ html(lang="en")
       )
     script(src="/lib/jquery/query-3.7.1.min.js")
     script(src="/lib/jquery-ui/jquery-ui.min.js")
-    //script(
+    script(
       src="/js/main.js" 
       type="module"
       )

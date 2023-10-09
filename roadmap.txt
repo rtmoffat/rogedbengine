@@ -24,5 +24,6 @@ Click and drag odesn't work on touchscreens. Implement tap to select card and th
 MVP Make actions modify statuses of objects (health, mana, etc)
     Move initGui to node
     Associate gui objects with javascript objects
+    ("#enemy4 div label")[0].textContent=3
     
 *Fix remote load code to return data object
