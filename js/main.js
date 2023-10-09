@@ -50,7 +50,8 @@ function initGui() {
             console.log('hi2');
             $("#thwack")[0].play();
             ui.draggable.remove();
-            console.log(event.target.id);
+            console.log(event.target.id);//Monster
+            console.log(ui.draggable[0].id);//Card
             console.log('hi');
         }
       });

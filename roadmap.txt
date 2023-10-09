@@ -22,5 +22,7 @@ Fix min-width bug when browser resized
 Click and drag odesn't work on touchscreens. Implement tap to select card and then tap to select target,
     or some other mechanism.
 MVP Make actions modify statuses of objects (health, mana, etc)
+    Move initGui to node
     Associate gui objects with javascript objects
+    
 *Fix remote load code to return data object
