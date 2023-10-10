@@ -40,8 +40,8 @@ html(lang="en")
         #player
           img(src="/images/knight1.gif")
         #enemies
-          each enemy in data['enemies']
-            #enemy4.enemy.droppable
+          each enemy,index in data['enemies']
+            div(id='enemy'+index class='enemy' class='droppable')
               //img(src="/images/troll_warlord.png")
               p=enemy.name
               div
