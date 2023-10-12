@@ -52,6 +52,8 @@ function initGui() {
             ui.draggable.remove();
             console.log(event.target.id);//Monster
             console.log(ui.draggable[0].id);//Card
+            //("#enemy4 div label")[0].textContent=3
+            $("#"+event.target.id+" div label")[0].textContent=ui.draggable[0].id;
             console.log('hi');
         }
       });

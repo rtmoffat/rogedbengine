@@ -1,3 +1,5 @@
+- var cnt = 0;
+- var card;
 doctype html
 // [if lt IE 7]>      <div data-pug="html" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]
 // [if IE 7]>         <div data-pug="html" class="no-js lt-ie9 lt-ie8"> <![endif]
@@ -41,7 +43,7 @@ html(lang="en")
           img(src="/images/knight1.gif")
         #enemies
           each enemy,index in data['enemies']
-            div(id='enemy'+index class='enemy' class='droppable')
+            div(id='enemy'+index class='enemy droppable')
               //img(src="/images/troll_warlord.png")
               p=enemy.name
               div
@@ -59,30 +61,15 @@ html(lang="en")
           #discardPile
             p 15
         #hand
-          #card9.card.draggable.template
-            .cardTitle
-              span Cost
-              span Name
-            .cardImage Image
-            .cardDescription Description
-          #card8.card.draggable.template
-            .cardTitle
-              span Cost
-              span Name
-            .cardImage Image
-            .cardDescription Description
-          #card7.card.draggable.template
-            .cardTitle
-              span Cost
-              span Name
-            .cardImage Image
-            .cardDescription Description
-          #card6.card.draggable.template
-            .cardTitle
-              span Cost
-              span Name
-            .cardImage Image
-            .cardDescription Description
+          //each card,index in data['cards']
+          for cnt in [...Array(5).keys()]
+            - card=data['cards'][cnt]
+            div(id='card'+cnt class='card draggable template')
+              .cardTitle
+                span=card.Cost
+                span=card.Name
+              .cardImage MyImage
+              .cardDescription MyDescription
         button#endTurn End Turn
     audio#thwack(
       src="/sounds/whack.mp3" 
