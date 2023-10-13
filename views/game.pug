@@ -22,7 +22,7 @@ html(lang="en")
       name="viewport"
       )
     link(
-      href="css/styles.css" 
+      href="css/newstyle.css" 
       rel="stylesheet"
       )
     link(
@@ -37,7 +37,7 @@ html(lang="en")
     #cont
       p=data['cards']
       #statusBar
-        span.unselectable health|stuff|some other stat
+        div.unselectable health|stuff|some other stat
       #arena
         #player
           //img(src="/images/knight1.gif")
@@ -54,16 +54,18 @@ html(lang="en")
                       value=enemy['health']
                   )
       #playArea
-        #mana
-          p 5
-        #deck
-          #drawPile
-            p 25
-          #discardPile
-            p 15
+        #board
+          #mana
+            p 5
+          #deck
+            #drawPile
+              p 25
+            #discardPile
+              p 15
+          button#endTurn End Turn
         #hand
           //each card,index in data['cards']
-          for cnt in [...Array(5).keys()]
+          for cnt in [...Array(6).keys()]
             - card=data['cards'][cnt]
             div(id='card'+cnt class='card draggable template')
               .cardTitle
@@ -71,7 +73,6 @@ html(lang="en")
                 span=card.Name
               .cardImage MyImage
               .cardDescription MyDescription
-        button#endTurn End Turn
     audio#thwack(
       src="/sounds/whack.mp3" 
       preload="auto"

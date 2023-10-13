@@ -1,0 +1,30 @@
+#cont {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows:repeat(3,1fr);
+  }
+  #cont div {text-align:center;}
+  #statusBar {
+    background-color: lime;
+    grid-column:1/3; 
+  }
+  
+  #arena {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    grid-column: 1 / 3;
+  }
+  .enemy {
+      background-color:aquamarine;
+  }
+  #player {background-color:yellow;}
+  #enemies {background-color:orange;
+      grid-column:2/4;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      grid-template-rows:repeat(2,1fr);}
+  #playArea {grid-column:1/4;background-color:violet;display:grid;grid-template-columns:repeat(2,1fr);}
+  #board {background-color:brown;display:grid;grid-template-columns:repeat(1,1fr);}
+  #hand {background-color:cornflowerblue;display:grid;grid-template-columns:repeat(6,1fr);}
+  .card {border:1px solid black;border-radius: 3%;background-color:white;}
