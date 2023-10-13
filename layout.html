@@ -38,7 +38,9 @@
     display:grid;
     grid-template-columns:repeat(3,1fr);
     grid-template-rows:repeat(2,1fr);}
-#footer {grid-column:1/4;background-color:violet;}
+#footer {grid-column:1/4;background-color:violet;display:grid;grid-template-columns:repeat(2,1fr);}
+#board {background-color:brown;display:grid;grid-template-columns:repeat(1,1fr);}
+#hand {background-color:cornflowerblue;display:grid;grid-template-columns:repeat(6,1fr);}
 </style>
     </head>
     <body>
@@ -58,8 +60,22 @@
                 <div class="enemy">Enemy6</div>
               </div>
             </div>
-            <div id="footer">footer</div>
-          </div>
+            <div id="footer">
+              <div id="board">
+                <div>Health</div>
+                <div>Drawpile</div>
+                <div>DiscardPile</div>
+              </div>
+              <div id="hand">
+                <div>Card1</div>
+                <div>Card1</div>
+                <div>Card1</div>
+                <div>Card1</div>
+                <div>Card1</div>
+                <div>Card1</div>
+              </div>
+            </div>
+        </div>
           
         <script src="" async defer></script>
     </body>
