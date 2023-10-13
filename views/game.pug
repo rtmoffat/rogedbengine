@@ -69,8 +69,9 @@ html(lang="en")
             - card=data['cards'][cnt]
             div(id='card'+cnt class='card draggable template')
               .cardTitle
-                span=card.Cost
-                span=card.Name
+                span.cCost=card.Cost
+                span.cName=card.Name
+                span.cDamage=card.Damage
               .cardImage MyImage
               .cardDescription MyDescription
     audio#thwack(

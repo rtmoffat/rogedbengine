@@ -41,28 +41,57 @@ function initGui() {
   $( function() {
     $( ".draggable" ).draggable({revert:"invalid",revertDuration:200,opacity: 0.35});
     $( ".droppable" ).droppable({
+        accept:(draggable)=> {
+          console.log("Checking");
+          console.log(draggable);
+          
+          let cCost=parseInt($(draggable).find("div.cardTitle span.cCost").html());
+          let playerMana=parseInt($("#mana p").html());
+          if (playerMana>=cCost) {
+            return true;
+          }
+          else {
+            return false;
+          }
+        },
         tolerance:"pointer",
         classes: {
             "ui-droppable-hover": "highlightTarget"
             },
         drop: function( event, ui ) {
             //alert('dropped!');
-            console.log('Dropped');
-            $("#thwack")[0].play();
-            console.log(event.target.id);//Monster
-            console.log(ui.draggable[0].id);//Card
-            //("#enemy4 div label")[0].textContent=3
-            let eLife=parseInt($("#"+event.target.id+" > div > label").html())
-            let cAtk=parseInt($("#"+ui.draggable[0].id+" div.cardTitle span")[0].textContent)
-            $("#"+event.target.id+" > div > label").html((eLife-cAtk).toString())
-            ui.draggable.remove();
-            console.log('eLife='+eLife+' cAtk='+cAtk);
+            //check mana level
+            var playerMana=parseInt($("#mana p").html())
+            var cMana=parseInt($("#"+ui.draggable[0].id+" div.cardTitle span.cCost").html())
+            if (playerMana>=cMana) {
+              console.log('Dropped');
+              $("#thwack")[0].play();
+              console.log(event.target.id);//Monster
+              console.log(ui.draggable[0].id);//Card
+              //("#enemy4 div label")[0].textContent=3
+              let eLife=parseInt($("#"+event.target.id+" > div > label").html())
+              let cAtk=parseInt($("#"+ui.draggable[0].id+" div.cardTitle span.cDamage").html())
+              console.log('eLife='+eLife+' cAtk='+cAtk);
+              $("#"+event.target.id+" > div > label").html((eLife-cAtk).toString())
+              ui.draggable.remove();
+              //Remove the enemy if elimnated
+              if ((eLife-cAtk)<=0) {
+                event.target.remove();
+              }
+              playerMana-=cMana;
+              $("#mana p").html(playerMana.toString());
+            }
+            else {
+              console.log('insufficient mana!');
+              ui.draggable.draggable("option","revert",true);
+              ui.draggable.draggable("option","revert","invalid");
+            }
         }
       });
     });
 }
 
-class Deck {
+/*class Deck {
   constructor(cards) {
     this.drawPile = [];
     this.discardPile = [];
@@ -128,7 +157,7 @@ class Card {
     this.cost = cost;
     this.dmg = dmg;
   }
-}
+}*/
 
 let enemies;
 let cards;

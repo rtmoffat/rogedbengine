@@ -6,7 +6,7 @@
     },
     {
         "name":"Goblin",
-        "health":30,
+        "health":5,
         "dmg":3
     },
     {
