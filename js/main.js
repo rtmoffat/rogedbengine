@@ -42,11 +42,9 @@ function initGui() {
     $( ".draggable" ).draggable({revert:"invalid",revertDuration:200,opacity: 0.35});
     $( ".droppable" ).droppable({
         accept:(draggable)=> {
-          console.log("Checking");
-          console.log(draggable);
-          
           let cCost=parseInt($(draggable).find("div.cardTitle span.cCost").html());
           let playerMana=parseInt($("#mana p").html());
+          console.log(playerMana+' '+cCost);
           if (playerMana>=cCost) {
             return true;
           }
