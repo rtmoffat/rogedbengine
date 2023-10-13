@@ -40,11 +40,18 @@ function loadData() {
   }
   return data;
 }
+function shuffleCards() {
+  for (let i = data['cards'].length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [data['cards'][i], data['cards'][j]] = [data['cards'][j], data['cards'][i]];
+  }
+}
 var data={};
 data=loadData();
 
 app.get('/', (req, res) => {
     try {
+        shuffleCards();
         console.log(data);
         res.render('game', { data:data})
     } catch(e) {
