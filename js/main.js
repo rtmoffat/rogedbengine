@@ -47,14 +47,16 @@ function initGui() {
             },
         drop: function( event, ui ) {
             //alert('dropped!');
-            console.log('hi2');
+            console.log('Dropped');
             $("#thwack")[0].play();
-            ui.draggable.remove();
             console.log(event.target.id);//Monster
             console.log(ui.draggable[0].id);//Card
             //("#enemy4 div label")[0].textContent=3
-            $("#"+event.target.id+" div label")[0].textContent=ui.draggable[0].id;
-            console.log('hi');
+            let eLife=parseInt($("#"+event.target.id+" > div > label").html())
+            let cAtk=parseInt($("#"+ui.draggable[0].id+" div.cardTitle span")[0].textContent)
+            $("#"+event.target.id+" > div > label").html((eLife-cAtk).toString())
+            ui.draggable.remove();
+            console.log('eLife='+eLife+' cAtk='+cAtk);
         }
       });
     });
