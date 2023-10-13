@@ -38,7 +38,8 @@ html(lang="en")
         span.unselectable health|stuff|some other stat
       #arena
         #player
-          img(src="/images/knight1.gif")
+          //img(src="/images/knight1.gif")
+          p player_image
         #enemies
           each enemy,index in data['enemies']
             div(id='enemy'+index class='enemy' class='droppable')
