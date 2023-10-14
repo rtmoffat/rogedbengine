@@ -27,4 +27,4 @@
   #playArea {grid-column:1/4;background-color:violet;display:grid;grid-template-columns:repeat(2,1fr);}
   #board {background-color:brown;display:grid;grid-template-columns:repeat(1,1fr);}
   #hand {background-color:cornflowerblue;display:grid;grid-template-columns:repeat(6,1fr);}
-  .card {border:1px solid black;border-radius: 3%;background-color:white;}
+  .card {border:1px solid black;border-radius: 3%;background-color:rgb(86, 86, 72);cursor:grab;height:100%;}

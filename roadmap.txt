@@ -25,7 +25,7 @@ Track state of objects and game on server side instead of just in the gui
     Make endpoints that return adjusted numbers
 MVP Make actions modify statuses of objects (health, mana, etc)
     *Player attack enemy
-    Enemy attack player    
+    *Enemy attack player    
     *Player mana reduction on card play
 *Fix remote load code to return data object
 End Turn Button
@@ -43,3 +43,5 @@ End Turn Button
                 then use replacewith to add/draw a new card
                 //create a template for this
 				node id = card id
+                //$("#hand").find(".cardContainer")[0].innerHTML=cardTemplate.html()
+                    This works, but need the rest of the classes to make it interactive.

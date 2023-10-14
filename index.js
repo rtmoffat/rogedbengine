@@ -57,6 +57,18 @@ app.get('/', (req, res) => {
     } catch(e) {
         console.log(e.message)
     }
-  })
+  });
+
+app.get('/draw',(req,res) => {
+  try {
+    console.log('drawing');
+    res.json(data['cards']);
+    //res.send('hi from pug');
+  }
+  catch(e) {
+    console.log(e.message)
+  }
+});
+
 app.listen(3000);
 console.log("listening");

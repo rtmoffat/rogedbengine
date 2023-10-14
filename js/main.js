@@ -103,14 +103,29 @@ function discardHand() {
   for (x=0;x<hand.length;x++) {
     console.log("removing "+hand[x].id);
     hand[x].remove();
+    //hand[x].replaceWith(cardTemplate);
     discardPile.html((parseInt(discardPile.html())+1).toString())
   }
+}
+
+function drawCards() {
+  $.get( "./draw", function( data ) {
+    //data contains cards
+    cIndex=1;
+    cardTemplate.find('span.cCost').html(data[cIndex].Cost);
+    cardTemplate.find('span.cName').html(data[cIndex].Name);
+    cardTemplate.find('span.cType').html(data[cIndex].Type);
+    $("#hand").find(".cardContainer")[0].innerHTML=cardTemplate.html()
+    console.log(data);
+
+  });
 }
 
 function endTurn() {
   alert('ending turn');
   discardHand();
   enemiesAttack();
+  drawCards();
 }
 
 /*class Deck {
@@ -184,6 +199,7 @@ class Card {
 let enemies;
 let cards;
 let levels;
+let cardTemplate;
 let data={};
 
 /*data=loadData();
@@ -197,3 +213,5 @@ console.log(pDeck.drawPile);
 const player1 = new Player([], 90, 6);
 console.log(player1.health)*/
 initGui();
+//Used to create new cards and add them to a card slot
+cardTemplate=$("#card0");

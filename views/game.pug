@@ -69,13 +69,14 @@ html(lang="en")
           //each card,index in data['cards']
           for cnt in [...Array(6).keys()]
             - card=data['cards'][cnt]
-            div(id='card'+cnt class='card draggable template')
-              .cardTitle
-                span.cCost=card.Cost
-                span.cName=card.Name
-                span.cDamage=card.Damage
-              .cardImage MyImage
-              .cardDescription MyDescription
+            div.cardContainer
+              div(id='card'+cnt class='card draggable template')
+                .cardTitle
+                  span.cCost=card.Cost
+                  span.cName=card.Name
+                  span.cDamage=card.Damage
+                .cardImage MyImage
+                .cardDescription MyDescription
     audio#thwack(
       src="/sounds/whack.mp3" 
       preload="auto"
