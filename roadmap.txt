@@ -35,10 +35,11 @@ End Turn Button
             *Add or increase dicard pile count
 	Enemies attack
 		For each ACTIVE enemy
-			obtain damage field
+			obtain damage field //Need to pull this from the server from the JSON
 			Reduce player life by damage
 	Draw new hand of cards
 		For each card in drawpile
-			Create card node
+			Create card node //When a card is removed from hand, use replacewith instead with a blank div as a placeholder
+                then use replacewith to add/draw a new card
                 //create a template for this
 				node id = card id

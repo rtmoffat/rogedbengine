@@ -89,6 +89,14 @@ function initGui() {
     });
 }
 
+function enemiesAttack() {
+  let enemies=$("#enemies").find(".enemy");
+  let playerHealth=$("#statusBar").find("#playerHealth p");
+  for (x=0;x<enemies.length;x++) {
+    console.log("Enemy "+enemies[x].id+" attacking!");
+    playerHealth.html((parseInt(playerHealth.html())-1).toString());
+  }
+}
 function discardHand() {
   let hand=$("#hand").find(".card");
   let discardPile=$("#discardPile p");
@@ -102,6 +110,7 @@ function discardHand() {
 function endTurn() {
   alert('ending turn');
   discardHand();
+  enemiesAttack();
 }
 
 /*class Deck {
