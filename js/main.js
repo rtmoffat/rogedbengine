@@ -89,6 +89,21 @@ function initGui() {
     });
 }
 
+function discardHand() {
+  let hand=$("#hand").find(".card");
+  let discardPile=$("#discardPile p");
+  for (x=0;x<hand.length;x++) {
+    console.log("removing "+hand[x].id);
+    hand[x].remove();
+    discardPile.html((parseInt(discardPile.html())+1).toString())
+  }
+}
+
+function endTurn() {
+  alert('ending turn');
+  discardHand();
+}
+
 /*class Deck {
   constructor(cards) {
     this.drawPile = [];

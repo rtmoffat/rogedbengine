@@ -62,7 +62,7 @@ html(lang="en")
               p 25
             #discardPile
               p 15
-          button#endTurn End Turn
+          button#endTurn(onclick="endTurn();") End Turn
         #hand
           //each card,index in data['cards']
           for cnt in [...Array(6).keys()]
@@ -81,6 +81,6 @@ html(lang="en")
     script(src="/lib/jquery/query-3.7.1.min.js")
     script(src="/lib/jquery-ui/jquery-ui.min.js")
     script(
+      blocking="render"
       src="/js/main.js" 
-      type="module"
       )

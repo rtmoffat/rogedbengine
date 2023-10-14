@@ -21,8 +21,24 @@ Create animations
 *Fix min-width bug when browser resized
 Click and drag odesn't work on touchscreens. Implement tap to select card and then tap to select target,
     or some other mechanism.
+Track state of objects and game on server side instead of just in the gui
+    Make endpoints that return adjusted numbers
 MVP Make actions modify statuses of objects (health, mana, etc)
     *Player attack enemy
     Enemy attack player    
     *Player mana reduction on card play
 *Fix remote load code to return data object
+End Turn Button
+	*Discard hand
+        *For each card in hand
+            *Remove card
+            *Add or increase dicard pile count
+	Enemies attack
+		For each ACTIVE enemy
+			obtain damage field
+			Reduce player life by damage
+	Draw new hand of cards
+		For each card in drawpile
+			Create card node
+                //create a template for this
+				node id = card id
