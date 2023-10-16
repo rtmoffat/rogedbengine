@@ -112,7 +112,7 @@ function discardHand() {
 }
 
 function drawCards() {
-  $.get( "./draw", function( data ) {
+  $.get( "./draw/6", function( data ) {
     //data contains cards
     for (cIndex=0;cIndex<6;cIndex++) {
       cardTemplate=cardTemplate.clone();
