@@ -1,3 +1,5 @@
+const https=require('https');
+const fs = require('fs');
 var express = require('express')
 var app = express()
 const path=require('path')
@@ -23,7 +25,7 @@ function loadData() {
   }
   else {
     console.log('Loading remotely');
-    const fs = require('fs');
+    //const fs = require('fs');
     const readline = require('readline');
     
     enemies=JSON.parse(fs.readFileSync('./data/enemies.json','utf-8'));
@@ -70,5 +72,16 @@ app.get('/draw',(req,res) => {
   }
 });
 
-app.listen(3000);
+https
+  .createServer(
+    {
+      key:fs.readFileSync("/certs/schplorph.com.key"),
+      cert:fs.readFileSync("/certs/schplorph.com.cert")
+    },
+    app)
+  .listen(3000,() => {
+    console.log('server running on port 3000')
+  });
+
+//app.listen(3000);
 console.log("listening");
