@@ -36,5 +36,6 @@ End Turn Button
 	Enemies attack
 		For each ACTIVE enemy
 			obtain damage field //Need to pull this from the server from the JSON
+                Do an fetch on the /state endpint to get the data object.
 			#Reduce player life by damage
 	#Draw new hand of cards

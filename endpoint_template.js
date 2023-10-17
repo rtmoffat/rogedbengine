@@ -117,6 +117,7 @@ app.get('/state',(req,res) => {
   res.json(data);
 });
 
+/*
 https
   .createServer(
     {
@@ -126,6 +127,6 @@ https
     app)
   .listen(3000,() => {
     console.log('server running on port 3000')
-  });
-//app.listen(3000);
+  });*/
+app.listen(3000);
 console.log("listening");

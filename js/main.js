@@ -96,8 +96,11 @@ function enemiesAttack() {
   let enemies=$("#enemies").find(".enemy");
   let playerHealth=$("#statusBar").find("#playerHealth p");
   for (x=0;x<enemies.length;x++) {
-    console.log("Enemy "+enemies[x].id+" attacking!");
-    playerHealth.html((parseInt(playerHealth.html())-1).toString());
+    console.log("Enemy "+enemies[x].id+" "+$("#enemies").find(".enemy p")[0].innerHTML+ " attacking!");
+    let currentEnemy=data['enemies'].find((item) => {
+      item.name == $("#enemies").find(".enemy p")[0].innerHTML;
+   })
+    playerHealth.html((parseInt(playerHealth.html())-currentEnemy.dmg).toString());
   }
 }
 function discardHand() {
