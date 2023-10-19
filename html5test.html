@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #movableDiv {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            position: absolute;
+            cursor: pointer;
+            user-drag: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="movableDiv"></div>
+
+    <script>
+        const movableDiv = document.getElementById('movableDiv');
+
+        let isDragging = false;
+        let offsetX, offsetY;
+
+        movableDiv.addEventListener('pointerdown', (e) => {
+            isDragging = true;
+            offsetX = e.clientX - movableDiv.getBoundingClientRect().left;
+            offsetY = e.clientY - movableDiv.getBoundingClientRect().top;
+        });
+
+        movableDiv.addEventListener('pointermove', (e) => {
+            if (isDragging) {
+                const x = e.clientX - offsetX;
+                const y = e.clientY - offsetY;
+
+                movableDiv.style.left = x + 'px';
+                movableDiv.style.top = y + 'px';
+            }
+        });
+
+        movableDiv.addEventListener('pointerup', () => {
+            isDragging = false;
+        });
+    </script>
+</body>
+</html>
