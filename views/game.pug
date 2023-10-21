@@ -40,7 +40,7 @@ html(lang="en")
       #statusBar
         div.unselectable 
           span#playerHealth
-            p 99
+            p=data['player'].currentLife
       #arena
         #player
           //img(src="/images/knight1.gif")
@@ -59,7 +59,7 @@ html(lang="en")
       #playArea
         #board
           #mana
-            p 5
+            p=data['player'].currentMana
           #deck
             #drawPile
               p 25

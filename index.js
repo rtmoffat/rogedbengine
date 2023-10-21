@@ -36,9 +36,14 @@ function loadData() {
     
     levels=JSON.parse(fs.readFileSync('./data/levels.json', 'utf8'));
     console.log(levels);
+    
+    player=JSON.parse(fs.readFileSync('./data/player.json', 'utf8'));
+    console.log(player);
+
     data['cards']=cards;
     data['enemies']=enemies;
     data['levels']=levels;
+    data['player']=player;
   }
   return data;
 }

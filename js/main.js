@@ -36,6 +36,12 @@ function loadData() {
   }
   return data;
 }*/
+function getUpdate() {
+  $.get('./state',(data)=> {
+    console.log("getting status");
+    console.log(data);
+  })
+}
 let droppableOptions={
   accept:(draggable)=> {
     let cCost=parseInt($(draggable).find("div.cardTitle span.cCost").html());
@@ -147,7 +153,7 @@ function resetMana() {
   $("#mana p").html(5);
 }
 function endTurn() {
-  alert('ending turn');
+  //alert('ending turn');
   discardHand();
   enemiesAttack();
   resetMana();
@@ -242,4 +248,5 @@ console.log(player1.health)*/
 initGui();
 //Used to create new cards and add them to a card slot
 cardTemplate=$("#card0").clone();
+getUpdate();
 //cardTemplate.draggable(draggableOptions);

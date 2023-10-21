@@ -38,13 +38,18 @@ function loadData() {
     
     levels=JSON.parse(fs.readFileSync('./data/levels.json', 'utf8'));
     console.log(levels);
+
+    player=JSON.parse(fs.readFileSync('./data/player.json', 'utf8'));
+    console.log(player);
+
     data['cards']=cards;
     data['enemies']=enemies;
     data['levels']=levels;
+    data['player']=player;
   }
   data['drawPile']=data['cards'];
   data['discardPile']=[];
-  data['player']={'maxLife':100,'maxMana':5,'currentLife':100,'currentMana':5,'handLimit':6};
+  //data['player']={'maxLife':100,'maxMana':5,'currentLife':100,'currentMana':5,'handLimit':6};
   data['hand']=[];
   return data;
 }
