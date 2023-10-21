@@ -114,7 +114,20 @@ function discardHand() {
 function drawCards() {
   $.get( "./draw/6", function( data ) {
     //data contains cards
-    for (cIndex=0;cIndex<6;cIndex++) {
+    let cIndex=0;
+    for (var card in data["hand"]) {
+      cardTemplate=cardTemplate.clone();
+      cardTemplate.find('span.cCost').html(card.Cost);
+      cardTemplate.find('span.cName').html(card.Name);
+      cardTemplate.find('span.cType').html(card.Type);
+      cardTemplate[0].id='card'+cIndex;
+      cIndex++;
+      //$("#hand").find(".cardContainer").first().append(cardTemplate);
+      $("#hand .cardContainer:not(:has(.card):first").append(cardTemplate);
+      //$("#"+cardTemplate[0].id).draggable(draggableOptions);  
+      console.log('appending '+JSON.stringify(data[cIndex]));
+    }
+    /*for (cIndex=0;cIndex<6;cIndex++) {
       cardTemplate=cardTemplate.clone();
       cardTemplate.find('span.cCost').html(data[cIndex].Cost);
       cardTemplate.find('span.cName').html(data[cIndex].Name);
@@ -124,7 +137,7 @@ function drawCards() {
       $("#hand .cardContainer:not(:has(.card):first").append(cardTemplate);
       //$("#"+cardTemplate[0].id).draggable(draggableOptions);  
       console.log('appending '+JSON.stringify(data[cIndex]));
-    }
+    }*/
     console.log(data);
     $(".draggable").draggable(draggableOptions);
   });

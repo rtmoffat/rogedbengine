@@ -109,7 +109,11 @@ app.get('/draw/:numCards',(req,res) => {
 });
 //
 app.get('/discard/:handCardIndex',(req,res) => {
-  data['hand'].splice(req.params.handCardIndex,1);
+  if (req.params.handCardIndex=='ALL') {
+    data['hand']=[];
+  } else {
+    data['hand'].splice(req.params.handCardIndex,1);
+  }
   res.json(data);
 })
 
