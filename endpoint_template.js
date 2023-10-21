@@ -5,9 +5,12 @@ var express = require('express')
 var app = express()
 const path=require('path')
 const sqlite3 = require('sqlite3');
+const cors=require('cors')
 app.set('view engine', 'pug')
 //Instructs the app to get static files relative to the root directory
 app.use(express.static(path.join(__dirname, '/')))
+//Rquired to parse post data
+app.use(express.json());
 
 function loadData() {
   var data={};
@@ -66,6 +69,24 @@ function shuffleCards() {
 var data={};
 data=loadData();
 
+var corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+//Allows client to post an update in JSON format
+//Returns JSON response to client
+//req.body contains the data sent in the request.
+app.post('/update',cors(corsOptions),(req,res)=> {
+  console.log("req contains:");
+  console.log(req.body);
+  switch (req.body.action) {
+    case "discard": {
+      console.log("discarding");
+    }
+  }
+  res.send({"test":5});
+})
 app.get('/newGame',(req,res)=> {
   try {
     data=loadData();
@@ -122,6 +143,7 @@ app.get('/discard/:handCardIndex',(req,res) => {
   res.json(data);
 })
 
+//Returns the state of the game
 app.get('/state',(req,res) => {
   res.json(data);
 });

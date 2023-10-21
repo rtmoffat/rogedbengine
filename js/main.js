@@ -42,6 +42,26 @@ function getUpdate() {
     console.log(data);
   })
 }
+function postUpdate(action,options) {
+  console.log("posting update for "+action+" with "+JSON.stringify(options));
+  let payLoad={"action":action,"options":options};
+  $.ajax(
+      {
+        url:"./update",
+        method:"POST", 
+        dataType:"json",
+        contentType:"application/json",
+        data:JSON.stringify(payLoad),
+        success: (result)=> {
+          console.log("received update from server");
+          console.log(result);
+        },
+        error: function (jqXHR, exception) {
+          console.log(jqXHR);
+          // Your error handling logic here..
+      }
+      })
+}
 let droppableOptions={
   accept:(draggable)=> {
     let cCost=parseInt($(draggable).find("div.cardTitle span.cCost").html());
@@ -249,4 +269,5 @@ initGui();
 //Used to create new cards and add them to a card slot
 cardTemplate=$("#card0").clone();
 getUpdate();
+postUpdate("discard",{"amt":6})
 //cardTemplate.draggable(draggableOptions);
