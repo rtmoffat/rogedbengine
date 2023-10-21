@@ -38,3 +38,5 @@ End Turn Button
 			obtain damage field //Need to pull this from the server from the JSON
 			#Reduce player life by damage
 	#Draw new hand of cards
+State should be based on data on the server. Make endpoints to modify state and return only
+    the part of the state related to the endpoint
